@@ -9,7 +9,9 @@ import { useSession } from "next-auth/client"
 function Checkout() {
     const items = useSelector(selectItems)
     const [session] = useSession()
-    const total = useSelector(selectTotal)
+    const { total, itemAmount } = useSelector(selectTotal)
+
+    console.log(total, itemAmount)
 
     return (
         <div className='bg-gray-100'>
@@ -42,6 +44,7 @@ function Checkout() {
                                 category={item.category}
                                 image={item.image}
                                 hasPrime={item.hasPrime}
+                                quantity={item.quantity}
                             />
                         ))}
 
@@ -50,10 +53,10 @@ function Checkout() {
 
                 {/* Right */}
 
-                {items.length > 0 && (
+                {itemAmount && (
                     <div className='flex flex-col bg-white p-10 shadow-md'>
                         <>
-                            <h2 className='whitespace-nowrap'>Subtotal ({items.length} items):
+                            <h2 className='whitespace-nowrap'>Subtotal ({itemAmount} items):
                                 <span className='font-bold'>
                                     <Currency quantity={total} currency='USD' />
                                 </span>

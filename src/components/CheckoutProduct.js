@@ -4,7 +4,7 @@ import Currency from 'react-currency-formatter'
 import { useDispatch } from "react-redux";
 import { addToBasket, removeFromBasket } from '../slices/basketSlice'
 
-function CheckoutProduct({ id, title, price, rating, description, category, image, hasPrime }) {
+function CheckoutProduct({ id, title, price, rating, description, category, image, hasPrime, quantity }) {
     const dispatch = useDispatch()
 
     const addItemToBasket = () => {
@@ -30,6 +30,7 @@ function CheckoutProduct({ id, title, price, rating, description, category, imag
 
             <div className='col-span-3 mx-5'>
                 <p>{title}</p>
+                <p>Quantity: {quantity}</p>
                 <div className='flex'>
                     {Array(rating)
                         .fill()
