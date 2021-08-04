@@ -14,15 +14,16 @@ function Checkout() {
     console.log(total, itemAmount)
 
     return (
-        <div className='bg-gray-100'>
+        <div className='bg-gray-100 h-10'>
             <Header />
             <main className='lg:flex max-w-screen-2xl mx-auto'>
+
                 {/* Left */}
                 <div className='flex-grow m-5 shadow-sm'>
                     <Image
                         src='https://links.papareact.com/ikj'
-                        width={1020}
-                        height={250}
+                        width={1800}
+                        height={500}
                         objectFit='contain'
                     />
 
@@ -53,8 +54,8 @@ function Checkout() {
 
                 {/* Right */}
 
-                {itemAmount && (
-                    <div className='flex flex-col bg-white p-10 shadow-md'>
+                {itemAmount > 0 && (
+                    <div className='flex flex-col bg-white p-10 shadow-md my-5 w-96 max-w-xl'>
                         <>
                             <h2 className='whitespace-nowrap'>Subtotal ({itemAmount} items):
                                 <span className='font-bold'>

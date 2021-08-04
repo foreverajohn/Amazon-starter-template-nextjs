@@ -17,6 +17,12 @@ export const basketSlice = createSlice({
         product.quantity += 1
       }
     },
+
+    removeOneFromBasket: (state, action) => {
+      const product = state.items.find(item => item.id === action.payload.id)
+      product.quantity -= 1
+    },
+
     removeFromBasket: (state, action) => {
       const index = state.items.findIndex(basketItem => basketItem.id === action.payload.id)
 
@@ -32,7 +38,7 @@ export const basketSlice = createSlice({
   },
 });
 
-export const { addToBasket, removeFromBasket } = basketSlice.actions;
+export const { addToBasket, removeFromBasket, removeOneFromBasket } = basketSlice.actions;
 
 // Selectors - This is how we pull information from the Global store slice
 export const selectItems = (state) => state.basket.items;
